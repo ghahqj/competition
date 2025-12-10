@@ -17,7 +17,6 @@
 
 1. **RoPE 算子融合**：使用 MindSpore 特有的 `ops.rotary_position_embedding` 融合算子替代原本的手动实现，大幅减少算子调用开销并提升计算密度。 
 2. **算子替换**：将 `swapaxes` 替换为 `ops.transpose`，将切片操作替换为 `ops.split`，获得更好的图编译性能。
-3. **移除冗余 Cast**：移除 Softmax 前后不必要的 `float32` 类型转换，直接在当前精度下计算。
 
 **源码实现** (`modeling_qwen2_vl.py`):
 
